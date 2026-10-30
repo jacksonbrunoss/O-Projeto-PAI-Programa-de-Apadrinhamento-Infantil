@@ -28,8 +28,9 @@ export const site = {
 };
 
 export const menu = [
+  { rotulo: "Cultos", href: "#cultos" },
   { rotulo: "Atividades", href: "#oficinas" },
-  { rotulo: "Acolhimento", href: "#acolhimento" },
+  { rotulo: "Locais", href: "#locais" },
   { rotulo: "Apoie", href: "#apoie" },
   { rotulo: "Transparência", href: "#transparencia" },
   { rotulo: "Contato", href: "#contato" },
@@ -49,7 +50,7 @@ export const encontros = {
   itens: [
     { icone: "calendario", rotulo: "Frequência", valor: "Dois sábados por mês" },
     { icone: "relogio", rotulo: "Horário", valor: "Das 8h às 11h" },
-    { icone: "atividades", rotulo: "Atividades", valor: "Oficinas educativas, musicais, artísticas e recreativas" },
+    { icone: "atividades", rotulo: "Atividades", valor: "Cultos temáticos, oficinas educativas, musicais, artísticas e recreativas" },
     { icone: "alimentacao", rotulo: "Acolhimento", valor: "Café da manhã e almoço" },
   ],
   nota: "Para saber as datas dos próximos encontros, fale com a equipe pelos canais oficiais.",
@@ -142,6 +143,7 @@ export const apoio = {
         "Contribua financeiramente para ajudar na manutenção das atividades, na aquisição de materiais e na realização dos encontros do Projeto PAI.",
       botao: "Quero contribuir",
       mensagem: "financeira",
+      extra: { rotulo: "Contribuir por Pix", href: "#pix" },
     },
     {
       icone: "alimentacao",
@@ -194,4 +196,57 @@ export const contato = {
 
 export const rodape = {
   texto: "Projeto PAI — Programa de Apadrinhamento Infantil",
+};
+
+// ------------------------------------------------------------
+// CULTOS TEMÁTICOS (texto editorial: ajuste para a realidade do projeto)
+// ------------------------------------------------------------
+export const cultos = {
+  titulo: "Antes das oficinas, um culto temático.",
+  texto:
+    "Cada encontro começa com um culto temático: um momento para reunir as crianças, refletir sobre valores importantes e iniciar o dia com atenção e carinho, em linguagem pensada para elas.",
+  foto: "",
+  // Opcional: liste os temas, ex.: ["Amizade", "Gratidão", "Respeito"]. Se ficar vazio, não aparece.
+  temas: [],
+};
+
+// ------------------------------------------------------------
+// LOCAIS — os 4 projetos. Preencha "endereco" para o mapa aparecer.
+// Dica: use endereço completo (rua, número, bairro, cidade, UF).
+// ------------------------------------------------------------
+export const locais = {
+  titulo: "Onde estamos",
+  texto:
+    "O Projeto PAI funciona em quatro locais diferentes. Encontre o mais próximo de você e fale com a equipe para confirmar as datas dos encontros.",
+  unidades: [
+    { nome: "Projeto PAI — Local 1", endereco: "", cor: "azul" },
+    { nome: "Projeto PAI — Local 2", endereco: "", cor: "amarelo" },
+    { nome: "Projeto PAI — Local 3", endereco: "", cor: "vermelho" },
+    { nome: "Projeto PAI — Local 4", endereco: "", cor: "verde" },
+  ],
+  semEndereco: "Endereço será informado em breve.",
+  botaoRota: "Como chegar",
+};
+
+// ------------------------------------------------------------
+// PIX E DADOS BANCÁRIOS — preencha somente com dados oficiais
+// e autorizados pela organização. Campos vazios não aparecem.
+// ------------------------------------------------------------
+export const pix = {
+  titulo: "Contribua por Pix",
+  texto:
+    "Se preferir, você pode contribuir diretamente por Pix ou transferência bancária. Sua ajuda fortalece as oficinas, os cultos e as refeições dos encontros.",
+  chave: "",
+  tipoChave: "", // ex.: "CNPJ", "E-mail", "Telefone" ou "Chave aleatória"
+  beneficiario: "",
+  dadosBancarios: [
+    { rotulo: "Banco", valor: "" },
+    { rotulo: "Agência", valor: "" },
+    { rotulo: "Conta", valor: "" },
+    { rotulo: "Tipo de conta", valor: "" },
+    { rotulo: "Titular", valor: "" },
+    { rotulo: "CNPJ", valor: "" },
+  ],
+  pendente: "Os dados para contribuição serão divulgados em breve. Enquanto isso, fale com a equipe pelo WhatsApp.",
+  aviso: "Confira sempre o nome do beneficiário antes de confirmar a contribuição.",
 };

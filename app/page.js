@@ -1,8 +1,9 @@
 import Icone from "../components/Icones";
 import Foto from "../components/Foto";
+import CopiarPix from "../components/CopiarPix";
 import {
   site, menu, hero, encontros, oficinas, chamada, acolhimento,
-  apoio, transparencia, contato, rodape, mensagens, linkWhatsApp,
+  apoio, transparencia, contato, rodape, mensagens, linkWhatsApp, cultos, locais, pix,
 } from "../data/conteudo";
 
 const Wpp = ({ mensagem, classe = "btn btn-amarelo", children }) => (
@@ -13,6 +14,7 @@ const Wpp = ({ mensagem, classe = "btn btn-amarelo", children }) => (
 );
 
 export default function Pagina() {
+  const dadosBancarios = pix.dadosBancarios.filter((d) => d.valor);
   return (
     <>
       <header className="topo">
@@ -73,6 +75,22 @@ export default function Pagina() {
           </div>
         </section>
 
+        {/* CULTOS TEMÁTICOS */}
+        <section id="cultos" className="secao cultos">
+          <div className="wrap cultos-grid">
+            <div className="cabeca esq">
+              <h2>{cultos.titulo}</h2>
+              <p>{cultos.texto}</p>
+              {cultos.temas.length > 0 && (
+                <ul className="temas">
+                  {cultos.temas.map((t) => (<li key={t}>{t}</li>))}
+                </ul>
+              )}
+            </div>
+            <Foto src={cultos.foto} alt="Culto temático do Projeto PAI" icone="cruz" cor="azul" proporcao="5 / 4" />
+          </div>
+        </section>
+
         {/* OFICINAS */}
         <section id="oficinas" className="secao">
           <div className="wrap">
@@ -129,6 +147,49 @@ export default function Pagina() {
           </div>
         </section>
 
+        {/* LOCAIS */}
+        <section id="locais" className="secao locais">
+          <div className="wrap">
+            <div className="cabeca">
+              <h2>{locais.titulo}</h2>
+              <p>{locais.texto}</p>
+            </div>
+            <div className="cards2">
+              {locais.unidades.map((u) => (
+                <article key={u.nome} className={`card cor-${u.cor}`}>
+                  {u.endereco ? (
+                    <iframe
+                      className="mapa"
+                      title={`Mapa: ${u.nome}`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      src={`https://www.google.com/maps?q=${encodeURIComponent(u.endereco)}&output=embed`}
+                    />
+                  ) : (
+                    <div className="foto foto-vazia cor-azul" style={{ aspectRatio: "16 / 10" }} role="img" aria-label={`Mapa de ${u.nome} ainda não disponível`}>
+                      <Icone nome="atividades" tamanho={44} />
+                    </div>
+                  )}
+                  <div className="card-corpo">
+                    <h3>{u.nome}</h3>
+                    <p className="endereco">{u.endereco || locais.semEndereco}</p>
+                    {u.endereco && (
+                      <a
+                        className="btn btn-contorno-azul btn-pequeno"
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(u.endereco)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {locais.botaoRota}
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* APOIE */}
         <section id="apoie" className="apoie" aria-labelledby="t-apoie">
           <div className="wrap">
@@ -146,9 +207,48 @@ export default function Pagina() {
                   <h3>{f.titulo}</h3>
                   <p>{f.descricao}</p>
                   <Wpp mensagem={mensagens[f.mensagem]}>{f.botao}</Wpp>
+                  {f.extra && <a className="btn btn-contorno-claro" href={f.extra.href}>{f.extra.rotulo}</a>}
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* PIX */}
+        <section id="pix" className="secao pix-sec" aria-labelledby="t-pix">
+          <div className="wrap">
+            <div className="cabeca">
+              <h2 id="t-pix">{pix.titulo}</h2>
+              <p>{pix.texto}</p>
+            </div>
+            <div className="pix-grid">
+              <article className="pix-card">
+                <h3>Chave Pix</h3>
+                {pix.chave ? (
+                  <>
+                    {pix.tipoChave && <p className="pix-tipo">{pix.tipoChave}</p>}
+                    <div className="pix-chave">{pix.chave}</div>
+                    <CopiarPix chave={pix.chave} />
+                  </>
+                ) : (
+                  <p>{pix.pendente}</p>
+                )}
+                {pix.beneficiario && <p className="pix-benef">Beneficiário: <strong>{pix.beneficiario}</strong></p>}
+              </article>
+              <article className="pix-card">
+                <h3>Dados bancários</h3>
+                {dadosBancarios.length > 0 ? (
+                  <ul className="dados">
+                    {dadosBancarios.map((d) => (
+                      <li key={d.rotulo}><span>{d.rotulo}</span><strong>{d.valor}</strong></li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{pix.pendente}</p>
+                )}
+              </article>
+            </div>
+            <p className="aviso">{pix.aviso}</p>
           </div>
         </section>
 

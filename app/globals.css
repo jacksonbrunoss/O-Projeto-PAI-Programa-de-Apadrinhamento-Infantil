@@ -139,3 +139,34 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--ciano); outline-o
 .rodape { background: var(--azul-escuro); color: #cfe0f7; padding: 2rem 0; }
 .rodape-in { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .rodape img { background: #fff; border-radius: 50%; padding: 2px; }
+
+/* Cultos temáticos */
+.cultos { background: var(--fundo); }
+.cultos-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+.cultos .cabeca p { font-size: 1.1rem; }
+.cultos .foto { border-radius: 24px; }
+.temas { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+.temas li { background: #fff; border: 1px solid var(--linha); border-left: 5px solid var(--amarelo); border-radius: 12px; padding: .35rem .8rem; font-weight: 700; color: var(--azul); font-size: .95rem; }
+@media (max-width: 860px) { .cultos-grid { grid-template-columns: 1fr; } }
+
+/* Locais */
+.locais { background: var(--fundo); }
+.mapa { width: 100%; aspect-ratio: 16 / 10; border: 0; display: block; }
+.card-corpo .endereco { color: var(--texto); font-weight: 600; margin-bottom: .9rem; }
+
+/* Pix */
+.pix-sec { background: var(--fundo); }
+.pix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+.pix-card { background: #fff; border: 1px solid var(--linha); border-top: 6px solid var(--verde); border-radius: 22px; padding: 1.8rem; }
+.pix-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: .6rem; }
+.pix-tipo { color: var(--suave); font-size: .95rem; }
+.pix-chave { font-family: var(--fonte-titulo), sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--azul); background: var(--fundo); border: 1px dashed #b7cbe6; border-radius: 14px; padding: .9rem 1rem; word-break: break-all; margin: .6rem 0 1.1rem; }
+.pix-benef { margin-top: 1rem; }
+.dados li { display: flex; justify-content: space-between; gap: 1rem; padding: .6rem 0; border-top: 1px solid var(--linha); }
+.dados span { color: var(--suave); }
+.dados strong { font-family: var(--fonte-titulo), sans-serif; color: var(--azul); text-align: right; word-break: break-word; }
+@media (max-width: 860px) { .pix-grid { grid-template-columns: 1fr; } }
+
+/* Botão contorno claro (seção Apoie) */
+.btn-contorno-claro { border-color: #fff; color: #fff; }
+.btn-contorno-claro:hover { background: rgba(255,255,255,.15); }
